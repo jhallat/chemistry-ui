@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+
 import './index.css';
-import App from './App';
+import './bootstrap.min.css';
+import ChemistryLabUI from './containers/ChemistryLabUI';
 import * as serviceWorker from './serviceWorker';
+import store from './configureStore';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ChemistryLabUI />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

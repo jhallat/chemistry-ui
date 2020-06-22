@@ -1,0 +1,27 @@
+.lab-header {
+  background-color: #f0c128;
+  margin-bottom: 10px;
+}
+
+.main-menu {
+  background-color: #ed8800;
+  border-radius: 10px 10px 0px 0px;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+.menu-header {
+  cursor: pointer;
+}
+
+.menu-contents {
+  position: fixed;
+  z-index: 2;
+  background-color: #ee9800;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+.menu-item {
+  cursor: pointer;
+}

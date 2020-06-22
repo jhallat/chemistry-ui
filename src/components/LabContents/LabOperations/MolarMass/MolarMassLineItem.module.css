@@ -1,0 +1,11 @@
+.input-line {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.operation-label {
+  font-weight: bold;
+  padding-right: 5px;
+  padding-left: 5px;
+}

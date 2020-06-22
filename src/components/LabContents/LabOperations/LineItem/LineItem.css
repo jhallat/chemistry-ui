@@ -1,0 +1,11 @@
+.line-number {
+  background-color: #e9ebfe;
+}
+
+.line-number:hover {
+  background-color: #a1aef9;
+}
+
+.line-selected {
+  border: 1px solid #c8cefb;
+}
