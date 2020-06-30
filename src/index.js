@@ -7,6 +7,7 @@ import './bootstrap.min.css';
 import ChemistryLabUI from './containers/ChemistryLabUI';
 import * as serviceWorker from './serviceWorker';
 import store from './configureStore';
+import './fontawesome';
 
 ReactDOM.render(
   <React.StrictMode>

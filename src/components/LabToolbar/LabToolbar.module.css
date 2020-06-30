@@ -1,0 +1,30 @@
+.toolbar-button {
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
+  color: #ec6900;
+  height: 35px;
+  width: 60px;
+}
+
+.toolbar-button:hover {
+  background-color: #fee9b2;
+}
+
+.toolbar-button:focus {
+  border: 1px solid #ec6900;
+  outline: none;
+}
+
+.button-label {
+  padding-right: 5px;
+}
+
+.button-contents {
+  display: flex;
+}
+
+.toolbar-container {
+  padding-bottom: 10px;
+  height: 40px;
+}

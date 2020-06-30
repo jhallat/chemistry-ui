@@ -9,3 +9,11 @@
 .line-selected {
   border: 1px solid #c8cefb;
 }
+
+.result-ok {
+  background-color: #e9ebfe;
+}
+
+.result-error {
+  background-color: #ffaaaa;
+}

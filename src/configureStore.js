@@ -1,8 +1,13 @@
 import { applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
+
 import LineOperations from './components/LabContents/LabOperations/LabOperations';
 import MolarMassModel from './components/LabContents/LabOperations/MolarMass/MolarMassModel';
-import LineModel from './components/LabContents/LabOperations/LineModel';
+import LineModel, {
+  StatusType,
+} from './components/LabContents/LabOperations/LineModel';
+import Formatter from './formatter';
 
 //TODO Handle model functions in a separate module
 const copyModel = (model) => {
@@ -11,6 +16,8 @@ const copyModel = (model) => {
       return new MolarMassModel(
         model.number,
         model.label,
+        model.result,
+        model.status,
         model.selected,
         model.formula
       );
@@ -52,11 +59,31 @@ function reducer(state = { lines: [] }, action) {
         selectedLines[action.number - 1].model.selected = true;
       }
       return { lines: selectedLines };
+    case 'RUN':
+      let runLines = [];
+      let results = action.data.results;
+      for (let [index, line] of state.lines.entries()) {
+        const runLine = Object.assign({}, line);
+        if (results[index].status === 'ERR') {
+          runLine.model.status = StatusType.ERR;
+        } else {
+          runLine.model.status = StatusType.OK;
+        }
+        runLine.model.result = Formatter.formatMeasurement(
+          results[index].result
+        );
+        runLines.push(runLine);
+      }
+      return { lines: runLines };
     default:
       return state;
   }
 }
 
-let store = createStore(reducer, applyMiddleware(logger));
+const logger = createLogger({
+  collapsed: true,
+});
+
+let store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default store;
